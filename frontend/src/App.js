@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 
 const initialSections = [
-  { title: 'First Input', input: '', response: '', loading: false, endpoint: '/api/nlp/first' },
-  { title: 'Second Input', input: '', response: '', loading: false, endpoint: '/api/nlp/second' },
+  { title: 'sin2eng Input', input: '', response: '', loading: false, endpoint: '/translate/sin2eng' },
+  { title: 'T5 Input', input: '', response: '', loading: false, endpoint: '/translate/T5' },
 ];
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
     );
 
     try {
-      const res = await fetch(`http://localhost:8080${sections[idx].endpoint}`, {
+      const res = await fetch(`http://localhost:5000${sections[idx].endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: sections[idx].input }),
@@ -37,7 +37,7 @@ function App() {
       setSections(sections =>
         sections.map((sec, i) =>
           i === idx
-            ? { ...sec, response: data.result || 'No response', loading: false }
+            ? { ...sec, response: data.english || 'No response', loading: false }
             : sec
         )
       );
