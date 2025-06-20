@@ -1,0 +1,166 @@
+/* Background styling */
+.app-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card container */
+.card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 340px;
+  max-width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.translator-label {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2563eb;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(37,99,235,0.08);
+}
+
+/* Section block */
+.section-block {
+  width: 100%;
+  margin-bottom: 2.2rem;
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+}
+
+/* Form styling */
+.input-form {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.7rem;
+}
+
+/* Input field as textarea - updated */
+.input-field {
+  flex: 1;
+  padding: 1.1rem 1.2rem;
+  font-size: 1.15rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #f9fafb;
+  min-height: 120px;        /* Increased height */
+  max-height: 300px;        /* Prevents it from getting too tall */
+  resize: vertical;         /* User can resize vertically */
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.input-field:focus {
+  border-color: #2563eb;
+  background: #fff;
+}
+
+/* Button styling */
+.submit-button {
+  padding: 0.9rem 1.6rem;
+  font-size: 1.07rem;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  min-width: 120px;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loader animation for button */
+.loader {
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Response area - updated */
+.response-area {
+  min-height: 120px;           /* Much taller for long outputs */
+  max-height: 300px;
+  width: 100%;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border: 1.5px solid #e0e7ef;
+  font-size: 1.13rem;
+  color: #1e293b;
+  padding: 1rem 1.2rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin-top: 0.5rem;
+  word-break: break-word;
+  overflow-y: auto;            /* Scroll if content exceeds */
+  white-space: pre-wrap;       /* Preserve line breaks */
+}
+
+.response-visible {
+  opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+  .card {
+    min-width: 90vw;
+    padding: 1.5rem 0.8rem 1.2rem 0.8rem;
+  }
+  .input-form {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .submit-button {
+    width: 100%;
+    min-width: unset;
+    height: 44px;
+    font-size: 1rem;
+  }
+  .input-field {
+    min-height: 90px;
+    font-size: 1rem;
+  }
+  .response-area {
+    min-height: 90px;
+    font-size: 1rem;
+  }
+}
