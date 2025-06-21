@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 const initialSections = [
-  { title: 'sin2eng Input', input: '', response: '', loading: false, endpoint: '/translate/sin2eng' },
-  { title: 'T5 Input', input: '', response: '', loading: false, endpoint: '/translate/T5' },
+  { title: 'Enter Sinhala Sentence', input: '', response: '', loading: false, endpoint: '/translate' },
 ];
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
     );
 
     try {
-      const res = await fetch(`http://localhost:5000${sections[idx].endpoint}`, {
+      const res = await fetch(`https://web-production-ae6fc.up.railway.app${sections[idx].endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: sections[idx].input }),
@@ -55,7 +54,7 @@ function App() {
   return (
     <div className="app-bg">
       <div className="card">
-        <div className="translator-label">Translator</div>
+        <div className="translator-label">Sinhala to English Translator</div>
         {sections.map((section, idx) => (
           <div key={idx} className="section-block">
             <div className="section-title">{section.title}</div>
@@ -81,6 +80,7 @@ function App() {
                 )}
               </button>
             </form>
+            <div className="section-title">English Translation</div>
             <div
               className={`response-area response-textarea${section.response ? ' response-visible' : ''}`}
             >
